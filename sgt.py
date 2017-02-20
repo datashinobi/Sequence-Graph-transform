@@ -1,8 +1,4 @@
 
-# coding: utf-8
-
-# In[14]:
-
 import numpy as np
 
 
@@ -69,17 +65,17 @@ def sgt(S, V, ls, k =1):
             W0[i,j] = len(C)
         
             cu = np.array([i[0] for i in C]) 
-       
             cv = np.array([i[1] for i in C]) 
-       
-            Wk[i,j] = np.sum(np.exp(-k * np.abs(cu, cv)))
+            
+            Wk[i,j] = np.sum(np.exp(-k * np.abs(cu - cv)))
         
-        l += len(U)
+        l += U.shape[0]
     
     if ls:
         W0 /= l
         
     W0[np.where(W0==0)] = 1e7  #avoid divide by 0
+    
     sgt = np.power(np.divide(Wk, W0), 1/k)
     
     
