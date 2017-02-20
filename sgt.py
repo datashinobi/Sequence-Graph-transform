@@ -1,7 +1,13 @@
+
+# coding: utf-8
+
+# In[14]:
+
 import numpy as np
 
 
 def getpositions(S, V):
+    
     '''
     compute index position of sequence S within V
     
@@ -11,24 +17,28 @@ def getpositions(S, V):
     
             [(209981, (array([8]),))(320033, (array([6]),)]
     '''
+    
     positions = [(v, np.where(S==v)) for v in V if v in S]
     
     return positions
     
     
 def sgt(S, V, ls, k =1):
+    
     '''
     
     Extract Sequence Graph Transform features algorithm 2
-    https://arxiv.org/pdf/1608.03533v8.pdf
+    
     
     S: sequence 
     V : set domain of all values
     ls: is length sensitive 
     k: hyperparameter  defaults to 1 for supervised learning typically selected κ from {1, 5, 10}
     
-    return: sgt vector 
+    return: sgt matrix
+    
     '''
+    
     size  = V.shape[0]
     l = 0
     W0, Wk = np.zeros((size,size)),  np.zeros((size,size))
@@ -55,6 +65,7 @@ def sgt(S, V, ls, k =1):
             V2 = np.array(positions[index][1]).ravel()
         
             C = [(i,j) for i in U for j in V2 if j > i]
+            
             W0[i,j] = len(C)
         
             cu = np.array([i[0] for i in C]) 
@@ -68,8 +79,9 @@ def sgt(S, V, ls, k =1):
     if ls:
         W0 /= l
         
-    W0[np.where(W0==0)] = 0.000001 #avoid divide by 0
+    W0[np.where(W0==0)] = 1e7  #avoid divide by 0
     sgt = np.power(np.divide(Wk, W0), 1/k)
     
-    sgt = sgt.reshape(-1)
+    
     return sgt
+
