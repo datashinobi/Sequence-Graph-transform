@@ -4,7 +4,7 @@ This repository contains code that implements the algorithm proposed in the pape
 on arxiv
  https://arxiv.org/abs/1608.03533 
 
-Sequence graph transform feature extraction is a powerful method hat extracts the short and long-term sequence features and embeds them in a finite-dimensional feature space.
+Sequence graph transform feature extraction is a powerful method that extracts the short and long-term sequence features and embeds them in a finite-dimensional feature space.
 
 
 # References 
