@@ -1,6 +1,6 @@
 # Sequence-Graph-transform
 
-This repository contains python implementation of the algorithm proposed  by Chitta Ranjan, Samaneh Ebrahimi, Kamran Paynabar
+This repository contains python implementation of the algorithm 2 proposed  by Chitta Ranjan, Samaneh Ebrahimi, Kamran Paynabar in their paper[1]
 
 
 
